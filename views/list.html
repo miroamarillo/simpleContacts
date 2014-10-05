@@ -1,0 +1,28 @@
+  <div class="large-12 columns">
+    <h2>Customers</h2>
+  	<table>
+  		<thead>
+  			<tr>
+  				<th>Picture</th>
+  				<th width="200px">Name</th>
+  				<th width="100px">City</th>
+  				<th width="100px">Country</th>
+  				<th width="200px">Email</th>
+  				<th width="100px">Balance</th>
+  				<th>Active</th>
+  			</tr>
+  		</thead>
+  		<tbody>
+  			<tr ng-repeat="contact in contacts">
+  				<td><img ng-src="{{contact.picture}}" alt=""></td>
+  				<td><a href="#/contact/{{$index}}">{{contact.name}}</a></td>
+  				<td>{{contact.city}}</td>
+  				<td>{{contact.country}}</td>
+  				<td>{{contact.email}}</td>
+  				<td>{{contact.balance | currency }}</td>
+  				<td ng-class="contact.isActive ? 'green' : 'red'"></td>
+  			</tr>
+  		</tbody>
+  	</table>
+  </div>
+
