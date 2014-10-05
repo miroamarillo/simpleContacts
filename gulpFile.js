@@ -1,20 +1,20 @@
-var gulp = require('gulp'),
-  connect = require('gulp-connect');
+var gulp 	= require('gulp'),
+	sync 	= require('browser-sync');
 
-gulp.task('connect', function() {
-  connect.server({
-    root: './',
-    livereload: true
-  });
+//Static Server
+gulp.task('browser-sync', function(){
+	sync({
+		server: {
+			baseDir: "./"
+		}
+	});
 });
-
-gulp.task('html', function () {
-  gulp.src('index.html')
-    .pipe(connect.reload());
-});
-
-gulp.task('watch', function () {
-  gulp.watch(['*.html','css/**', 'js/**'], ['html']);
-});
-
-gulp.task('default', ['connect', 'watch']);
+gulp.task('js', function(){
+		return gulp.src('js/*js');
+	});
+gulp.task('css', function(){
+		return gulp.src('css/*css');
+	});
+gulp.task('default', ['browser-sync'], function(){
+		gulp.watch("js/*js", "css/*css", ['js','css', sync.reload]);
+	});
