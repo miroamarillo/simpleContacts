@@ -9,12 +9,9 @@ gulp.task('browser-sync', function(){
 		}
 	});
 });
-gulp.task('js', function(){
-		return gulp.src('js/*js');
-	});
-gulp.task('css', function(){
-		return gulp.src('css/*css');
+gulp.task('fileChanges', function(){
+		return gulp.src(['js/*js', 'css/*css','*html','views/*html']);
 	});
 gulp.task('default', ['browser-sync'], function(){
-		gulp.watch("js/*js", "css/*css", ['js','css', sync.reload]);
+		gulp.watch(['js/*js','css/*css','*html', 'views/*html'], ['fileChanges', sync.reload]);
 	});
