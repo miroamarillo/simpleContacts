@@ -7,20 +7,21 @@
     <link rel='stylesheet' href='css/app.css' />
     <script src="js/vendor/modernizr.js"></script>
   </head>
-  <body ng-app>
+  <body ng-app="contacts">
   	<div class="row">
-  	  <div class="large-12 columns">
-  	    <h1>simpleContacts</h1>
-    	<p>Simple Contact's Manager App</p>
-  	  </div>
+  	  <div class="large-12 columns" ng-controller="Contacts">
+  	     <h1>Simple Contacts</h1>
+    	   <p>Simple Contact's Manager App</p>
+         <div ng-view></div>
+      </div>
   	</div>
-
-    <script src="js/vendor/angular/angular.min.js"></script>
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
     <script>
       $(document).foundation();
     </script>
-    <script type="text/javascript" src="js/app.js"></script>
+    <script src="js/vendor/angular/angular.min.js"></script>
+    <script src="js/vendor/angular/extras/angular-route.min.js"></script>
+    <script src="js/contacts.js"></script>
   </body>
 </html>
