@@ -7,3 +7,9 @@ body {
 .red {
 	background-color: #C03E35;
 }
+span.prefix {
+	border-right: 1px solid #cccccc;
+}
+[class*="column"] + [class*="column"]:last-child {
+	float: left;
+}
