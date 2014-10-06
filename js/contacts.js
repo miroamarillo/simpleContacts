@@ -34,3 +34,20 @@ angular.module('contacts', ['ngRoute'])
 		$scope.contact = $scope.contacts[$routeParams.index];
 		$scope.index = $routeParams.index;
 	}])
+	.directive('contenteditable', function() {
+	  return {
+	    require: 'ngModel',
+	    link: function(scope, element, attrs, ngModel) {
+
+	      element.bind('blur change', function() {
+	        scope.$apply(function() {
+	          ngModel.$setViewValue(element.html());
+	        });
+	      });
+
+	      ngModel.$render = function() {
+	        element.html(ngModel.$viewValue);
+	      };
+	    }
+	  }
+	});
