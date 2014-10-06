@@ -1,26 +1,45 @@
-    <h2>Customers</h2>
-  	<table>
-  		<thead>
-  			<tr>
-  				<th>Picture</th>
-  				<th width="200px">Name</th>
-  				<th width="100px">City</th>
-  				<th width="100px">Country</th>
-  				<th width="200px">Email</th>
-  				<th width="100px">Balance</th>
-  				<th>Active</th>
-  			</tr>
-  		</thead>
-  		<tbody>
-  			<tr ng-repeat="contact in contacts">
-  				<td><img ng-src="{{contact.picture}}" alt=""></td>
-  				<td><a href="#/contact/{{$index}}">{{contact.name}}</a></td>
-  				<td contenteditable="true" ng-model="contact.city">{{contact.city}}</td>
-  				<td>{{contact.country}}</td>
-  				<td>{{contact.email}}</td>
-  				<td>{{contact.balance | currency }}</td>
-  				<td ng-class="contact.isActive ? 'green' : 'red'"></td>
-  			</tr>
-  		</tbody>
-  	</table>
+		<h2>Customers</h2>
+		<form>
+			<div class="row">
+				<div class="large-6 columns">
+					<label>Filter by Name
+						<input type="text" ng-model="custFilter.name"/>
+					</label>
+				</div>
+				<div class="large-6 columns">
+					<label>Filter by City
+						<input type="text" ng-model="custFilter.city"/>
+					</label>
+				</div>
+			</div>
+		</form>
+		<div class="row">
+			<div class="large-12 columns">
+				<table class="large-12">
+					<thead>
+						<tr>
+							<th>Picture</th>
+							<th ng-click="sortBy='name';reverse=!reverse">Name</th>
+							<th ng-click="sortBy='city';reverse=!reverse">City</th>
+							<th ng-click="sortBy='country';reverse=!reverse">Country</th>
+							<th ng-click="sortBy='email';reverse=!reverse">Email</th>
+							<th ng-click="sortBy='balance';reverse=!reverse">Balance</th>
+							<th ng-click="sortBy='isActive';reverse=!reverse">Active</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="contact in contacts | filter:custFilter | orderBy:sortBy:reverse">
+							<td><img ng-src="{{contact.picture}}" alt=""></td>
+							<td><a href="#/contact/{{$index}}">{{contact.name}}</a></td>
+							<td contenteditable="true" ng-model="contact.city">{{contact.city}}</td>
+							<td>{{contact.country}}</td>
+							<td>{{contact.email}}</td>
+							<td>{{contact.balance | currency }}</td>
+							<td ng-class="contact.isActive ? 'green' : 'red'"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
 
