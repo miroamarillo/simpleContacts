@@ -71,6 +71,12 @@ angular.module('contacts', ['ngRoute'])
 		//This new service will replace the URL and send the user to the home page
 		$location.path('/').replace();
 	}])
+	.filter('cleanSearch', function(){
+		//This filter will make the search to be on consecutive characters
+		return function(input){
+			return input.substr(0, input.length).toLowerCase() == input.toLowerCase();
+		}
+	})
 	.directive('contenteditable', function() {
 	  return {
 		require: 'ngModel',
