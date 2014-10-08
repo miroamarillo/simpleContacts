@@ -18,28 +18,30 @@
 				<table class="large-12">
 					<thead>
 						<tr>
-							<th>Picture</th>
 							<th ng-click="sortBy='name';reverse=!reverse">Name</th>
 							<th ng-click="sortBy='city';reverse=!reverse">City</th>
 							<th ng-click="sortBy='country';reverse=!reverse">Country</th>
 							<th ng-click="sortBy='email';reverse=!reverse">Email</th>
 							<th ng-click="sortBy='balance';reverse=!reverse">Balance</th>
 							<th ng-click="sortBy='isActive';reverse=!reverse">Active</th>
+							<th>Picture</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr ng-repeat="contact in contacts | filter:custFilter | orderBy:sortBy:reverse">
-							<td><img ng-src="{{contact.picture}}" alt=""></td>
 							<td><a href="#/contact/{{$index}}">{{contact.name}}</a></td>
 							<td contenteditable="true" ng-model="contact.city">{{contact.city}}</td>
 							<td>{{contact.country}}</td>
 							<td>{{contact.email}}</td>
 							<td>{{contact.balance | currency }}</td>
 							<td ng-class="contact.isActive ? 'green' : 'red'"></td>
+							<td><img ng-src="{{contact.picture}}" alt=""></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
-
+		<div class="row">
+			<a href="#/add" class="button small-12">Add New</a>
+		</div>
 
