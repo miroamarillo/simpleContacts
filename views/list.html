@@ -28,7 +28,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="contact in contacts | filter:custFilter | orderBy:sortBy:reverse">
+						<tr ng-repeat="contact in contacts | filter:custFilter:cleanSearch | orderBy:sortBy:reverse">
 							<td><a href="#/contact/{{$index}}">{{contact.name}}</a></td>
 							<td contenteditable="true" ng-model="contact.city">{{contact.city}}</td>
 							<td>{{contact.country}}</td>
