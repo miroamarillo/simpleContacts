@@ -11,10 +11,18 @@ angular.module('contacts', ['ngRoute'])
 				templateUrl: 'views/edit.html',
 				controller: 'Edit'
 			})
+			.when('/add', {
+				templateUrl: 'views/edit.html',
+				controller: 'Add'
+			})
+			.when('/delete/:index', {
+				templateUrl: 'views/edit.html',
+				controller: 'Delete'
+			})
 			.when('/',
 			{
 				templateUrl: 'views/list.html'
-			})
+			});
 			// .otherwise({ redirectTo: '/'});
 	}])
 	.controller('Contacts', ['$scope','$http', function($scope, $http){
